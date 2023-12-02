@@ -57,7 +57,7 @@ fi
 
 # SCRIPT_PATH=$DIR/../tensorflow_model_garden/research/object_detection/model_main_tf2.py
 SCRIPT_PATH=$DIR/model_main_tf2.py
-python ${SCRIPT_PATH} \
+python3 ${SCRIPT_PATH} \
   --pipeline_config_path=${PIPELINE_CONFIG_PATH} \
   --model_dir=${MODEL_DIR}\
   --checkpoint_every_n=100 \

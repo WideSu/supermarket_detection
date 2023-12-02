@@ -9,7 +9,9 @@ IFS=$'\n\t'
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # upgrade pip to latest version
-python3 -m pip install --upgrade pip
+# python3 -m pip install --upgrade 
+python3 -m pip install tensorflow-object-detection-api
+python3 -m pip install tf-models-official
 # Install python packages
 pip install -r ${DIR}/requirements.txt
 
@@ -49,14 +51,13 @@ if command -v protoc &> /dev/null; then
 else
     echo "Installing protoc"
     if [ $(uname -s) == "Darwin" ]; then
-        PROTOC_ZIP=protoc-3.7.1-osx-x86_64.zip
+        PROTOC_ZIP=protoc-25.1-osx-x86_64.zip
     else
-        PROTOC_ZIP=protoc-3.7.1-linux-x86_64.zip
+        PROTOC_ZIP=protoc-25.1-linux-x86_64.zip
     fi
-
-    curl -OL https://github.com/google/protobuf/releases/download/v3.7.1/${PROTOC_ZIP}
-    unzip -o ${PROTOC_ZIP} -d /usr/local bin/protoc
-    unzip -o ${PROTOC_ZIP} -d /usr/local include/*
+    curl -OL https://github.com/google/protobuf/releases/download/v25.1/${PROTOC_ZIP}
+    sudo unzip -o ${PROTOC_ZIP} -d /usr/local bin/protoc
+    sudo unzip -o ${PROTOC_ZIP} -d /usr/local include/*
     rm -f ${PROTOC_ZIP}
 fi
 
@@ -68,8 +69,7 @@ echo "Install the Object Detection API"
 cd research/
 protoc object_detection/protos/*.proto --python_out=.
 cp object_detection/packages/tf2/setup.py .
-python -m pip install .
-
+python3 -m pip install .
 echo "Installation complete"
 
 
