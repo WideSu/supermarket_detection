@@ -10,6 +10,8 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # upgrade pip to latest version
 python3 -m pip install --upgrade pip
+python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+python3 -m pip install tf-models-official
 # Install python packages
 pip install -r ${DIR}/requirements.txt
 
