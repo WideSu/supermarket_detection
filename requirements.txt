@@ -4,8 +4,10 @@ nbformat
 ipywidgets>=7.0.0 
 python-dotenv
 pyyaml==5.3.1
+pyqtwebengine==5.15.6
+pyqt5==5.15.10
 attrdict
-scipy==1.7.1
+scipy==1.7.2
 numpy
 opencv-python
 mtcnn
