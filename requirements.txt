@@ -1,5 +1,6 @@
 fiftyone
-tensorflow
+tensorflow==2.3
+AutoKeras==1.0.10
 nbformat
 ipywidgets>=7.0.0 
 python-dotenv

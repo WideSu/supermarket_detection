@@ -10,7 +10,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # upgrade pip to latest version
 python3 -m pip install --upgrade pip
-python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+python3 -c "import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
 python3 -m pip install tf-models-official
 # Install python packages
 pip install -r ${DIR}/requirements.txt
@@ -71,7 +71,6 @@ cd research/
 protoc object_detection/protos/*.proto --python_out=.
 cp object_detection/packages/tf2/setup.py .
 python -m pip install .
-
 echo "Installation complete"
 
 
